@@ -1,0 +1,33 @@
+a {
+    text-decoration: none;
+}
+
+/*center an element*/
+.e-center {
+    align-self: center;
+}
+/*position an element to the left*/
+.e-left {
+    align-self: left;
+}
+/*position an element to the right*/
+.e-right {
+    align-self: right;
+}
+/*Navigation Bars*/
+.e-sidebar {list-style-type: none;margin: 0;padding: 0;width: 25%;background-color: #f1f1f1;height: 100%; /* Full height */position: fixed; /* Make it stick, even on scroll */overflow: auto; /* Enable scrolling if the sidebar has too much content */}
+.e-topbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.e-nav-item {display:block;color:white;text-align:center;padding:14px 16px;}.btn{border:none;color:white;padding:15px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;}
+/*selecting border radius of elements*/
+.e-r-f{border-radius: 50%;}.e-r-h{border-radius: 25%;}.e-r-q{border-radius: 12.5%;}
+/*Colours*/
+.e-aliceblue{color: aliceblue;}.e-antiquewhite{color: antiquewhite;}.e-aqua{color: aqua;}.e-aquamarine{color: aquamarine;}.e-azure{color: azure;}.e-beige{color: beige;}.e-bisque{color: bisque;}.e-black{color:black;}.e-blanchedalmond{color:blanchedalmond;}.e-blue{color:blue;}.e-blueviolet {color:blueviolet;}.e-brown{color:brown;}.e-burlywood{color:burlywood;}.e-cadetblue{color:cadetblue;}.e-chartreuse{color:chartreuse;}.e-chocolate {color:chocolate;}.e-coral{color: coral;}.e-cornflowerblue{color: cornflowerblue;}.e-cornsilk{color:cornsilk;}.e-crimson{color:crimson;}.e-cyan{color: cyan;}.e-darkblue {color:darkblue;}.e-darkcyan{color:darkcyan;}.e-darkgoldenrod{color:darkgoldenrod;}.e-darkgrey{color:darkgrey;}.e-darkgreen{color:darkgreen;}.e-darkkhaki{color:darkkhaki;}.e-darkmagenta{color:darkmagenta;}.e-darkolivegreen{color:darkolivegreen;}.e-darkorange{color:darkorange;}.e-darkorchid{color:darkorchid;}.e-darkred{color:darkred;}.e-darksalmon{color:darksalmon;}.e-darkseagreen {color:darkseagreen;}.e-darkslateblue{color:darkslateblue;}.e-darkslategray{color:darkslategray;}.e-darktorquoise{color:darkturquoise;}.e-darkviolet{color:darkviolet;}.e-gray{color:gray;}.e-green{color:green;}.e-orange{color:orange;}.e-purple{color:purple;}.e-red{color:red;}
