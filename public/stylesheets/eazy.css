@@ -25,8 +25,9 @@ a {
     position: fixed;
     top: 0;
     width: 100%;
+    float:right;
 }
-.e-nav-item {display:block;color:white;text-align:center;padding:14px 16px;}.btn{border:none;color:white;padding:15px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;}
+.e-nav-item{display:block;color:white;text-align:center;padding:14px 16px;}.e-nav-item-h{display:inline-block;color:white;text-align:center;padding:14px;}.btn{border:none;color:white;padding:15px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;}
 /*selecting border radius of elements*/
 .e-r-f{border-radius: 50%;}.e-r-h{border-radius: 25%;}.e-r-q{border-radius: 12.5%;}
 /*Colours*/
