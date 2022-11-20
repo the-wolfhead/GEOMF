@@ -17,6 +17,7 @@ a {
 /*Navigation Bars*/
 .e-sidebar {list-style-type: none;margin: 0;padding: 0;width: 25%;background-color: #f1f1f1;height: 100%; /* Full height */position: fixed; /* Make it stick, even on scroll */overflow: auto; /* Enable scrolling if the sidebar has too much content */}
 .e-topbar {
+    display:block;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -27,7 +28,7 @@ a {
     width: 100%;
     float:right;
 }
-.e-nav-item{display:block;color:white;text-align:center;padding:14px 16px;}.e-nav-item-h{display:inline-block;color:white;text-align:center;padding:14px;}.btn{border:none;color:white;padding:15px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;}
+.e-nav-item{display:block;color:white;text-align:center;padding:14px 16px;}.e-nav-item-h{float: right; color:white;text-align:center;padding:14px;}.e-nav-logo{max-height:30px;max-width: 30px;float:left;padding:7px}.btn{border:none;color:white;padding:15px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;}
 /*selecting border radius of elements*/
 .e-r-f{border-radius: 50%;}.e-r-h{border-radius: 25%;}.e-r-q{border-radius: 12.5%;}
 /*Colours*/

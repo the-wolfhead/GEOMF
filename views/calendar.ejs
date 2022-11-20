@@ -1,1 +1,30 @@
-<%- include('./navbar.ejs') %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('./links.ejs') %>
+  </head>
+  <body>
+    <%- include('./navbar.ejs') %>
+   
+    <div>
+        <h1>Timeline of Events</h1>
+        <div>
+          <table>
+            <thead>
+                 <tr>
+                     <th>Date</th>
+                     <th>Event</th>
+                     <th>Venue</th>
+                 </tr>
+                 <tr>
+                     <td>20/12/2022</td>
+                     <td>End of year outreach</td>
+                     <td>Hope Orphanage</td>
+                 </tr>
+             </thead>
+         </table>
+        </div>
+    </div>
+  </body>
+</html>
