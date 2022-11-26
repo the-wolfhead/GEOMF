@@ -3,14 +3,14 @@
   <head>
     <title><%= title %></title>
     <%- include('./links.ejs') %>
+    <%- include('./navbar.ejs') %>
   </head>
   <body>
-    <%- include('./navbar.ejs') %>
-   
+    
     <div>
         <h1>Timeline of Events</h1>
         <div>
-          <table>
+          <table class="UserTable table table-hover text-light" >
             <thead>
                  <tr>
                      <th>Date</th>
