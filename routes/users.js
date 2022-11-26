@@ -10,12 +10,33 @@ router.get('/donate', (req, res) => {
   res.render('donate', {title: 'Donate'})
 })
 
-router.get('/calendar', (req, res) => {
-  res.render('calendar', {title: 'Calendar'})
+router.get('/about-us/our-story', (req, res) => {
+  res.render('about-us/our-story')
 })
 
-router.get('/gallery', (req, res) => {
-  res.render('gallery', {title: 'Gallery'})
+router.get('/about-us/board-of-trustees', (req, res) => {
+  res.render('about-us/board_of_trustees')
 })
+
+router.get('/about-us/our-staff', (req, res) => {
+  res.render('about-us/our-staff')
+})
+
+router.get('/about-us', (req, res) => {
+  res.render('about-us')
+})
+
+router.get('/our-work/orphanages', () => {
+  res.remder('our-work/orphanages')
+})
+
+router.get('/our-work/outreach', () => {
+  res.remder('our-work/outreach')
+})
+
+router.get('/our-work', () => {
+  res.remder('our-work')
+})
+
 
 module.exports = router;
