@@ -10,15 +10,15 @@ router.get('/donate', (req, res) => {
   res.render('donate', {title: 'Donate'})
 })
 
-router.get('/about-us/our-story', (req, res) => {
-  res.render('about-us/our-story')
+router.get('/about-us/our-story/', (req, res) => {
+  res.render('about-us/our_story')
 })
 
-router.get('/about-us/board-of-trustees', (req, res) => {
+router.get('/about-us/board-of-trustees/', (req, res) => {
   res.render('about-us/board_of_trustees')
 })
 
-router.get('/about-us/our-staff', (req, res) => {
+router.get('/about-us/our-staff/', (req, res) => {
   res.render('about-us/our-staff')
 })
 
@@ -26,16 +26,16 @@ router.get('/about-us', (req, res) => {
   res.render('about-us')
 })
 
-router.get('/our-work/orphanages', () => {
-  res.remder('our-work/orphanages')
+router.get('/our-work/orphanages', (req,res) => {
+  res.render('our-work/orphanages')
 })
 
-router.get('/our-work/outreach', () => {
-  res.remder('our-work/outreach')
+router.get('/our-work/outreach', (req,res) => {
+  res.render('our-work/outreach')
 })
 
-router.get('/our-work', () => {
-  res.remder('our-work')
+router.get('/our-work', (req,res) => {
+  res.render('our-work')
 })
 
 
