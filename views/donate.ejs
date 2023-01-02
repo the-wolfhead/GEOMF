@@ -4,67 +4,130 @@
     <title><%= title %></title>
     <%- include('./links.ejs') %>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script
       src="https://www.paypal.com/sdk/js?components=buttons,hosted-fields&client-id=<%= clientId %>"
       data-client-token="<%= clientToken %>"
     ></script>
   </head>
   <body style="background-color: #001021;">
-    <h1 style="color:aliceblue; text-align:center; font-size: 96px; font-weight: bold; margin-top: 40px">We need you support!</h1>
+    <h1 style="color:aliceblue; text-align:center; font-size: 96px; font-weight: bold; margin-top: 40px">We need your support!</h1>
     <div style="max-width: 50%; margin: auto;">
         <p style="color:aliceblue; text-align:center;">June 12 2021, the Grace E Omoifo memorial Foundation successfully had her inaugural outing with outreach visits to two Orphanages with the Benin metropolis. Edo Orphanage and Iwinosa Orphanage both situated in Oredo local government area of Benin. There was palpable excitement as Friends and volunteers unloaded the packages and moved them from the conveying vehicles and vans into the buildings. This excitement was translated to empathy, happiness and a sense of satisfaction when we actually saw the Orphans, carried the babies, interacted with the children, clapped, sang, and prayed with them. Such beautiful babies, young children completely oblivious of the seeming disadvantage of their immediate circumstances. Just happy to be. They lean on one another for strength and support. The older children are taught to care for the younger ones like siblings. The love and togetherness amongst them is remarkable. They have been brought together by circumstances beyond their control yet they make the most of this. Many will complain less about their lot in life when they savour the beautiful tastes of the lemonades that the Orphans and their minders heartily make from life's lemons. We wish to express our deep appreciation to the Friends and partners of the Grace E Omoifo memorial Foundation (GEOMF) for their support in making this desire a reality. Grace for greater exploits!</p>
-        <div id="paypal-button-container" style="max-width: 50%; margin: auto;"></div>
-        <!-- Sample PayPal credentials (client-id) are included -->
-        <script src="https://www.paypal.com/sdk/js?client-id=AZpqT1uj7oL51_MPLrwaRTjTZYZ5-poqaZChPulR-w7SHIbCDWD06a1Rr_jjUwqZUOxGk1pJ7PcbLKky&currency=USD&intent=capture&enable-funding=venmo" data-sdk-integration-source="integrationbuilder"></script>
-        <script>
-          const paypalButtonsComponent = paypal.Buttons({
-              // optional styling for buttons
-              // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
-              style: {
-                color: "gold",
-                shape: "rect",
-                layout: "vertical"
-              },
-
-              // set up the transaction
-              createOrder: (data, actions) => {
-                  // pass in any options from the v2 orders create call:
-                  // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
-                  const createOrderPayload = {
-                      purchase_units: [
-                          {
-                              amount: {
-                                  value: "88.44"
-                              }
-                          }
-                      ]
-                  };
-
-                  return actions.order.create(createOrderPayload);
-              },
-
-              // finalize the transaction
-              onApprove: (data, actions) => {
-                  const captureOrderHandler = (details) => {
-                      const payerName = details.payer.name.given_name;
-                      console.log('Transaction completed');
-                  };
-
-                  return actions.order.capture().then(captureOrderHandler);
-              },
-
-              // handle unrecoverable errors
-              onError: (err) => {
-                  console.error('An error prevented the buyer from checking out with PayPal');
-              }
-          });
-
-          paypalButtonsComponent
-              .render("#paypal-button-container")
-              .catch((err) => {
-                  console.error('PayPal Buttons failed to render');
-              });
-        </script>
+        <!-- Button trigger modal -->
+        <button type="button" id="button" class="btn btn-primary" style="max-width: 760px;width: 100%;margin: 0 auto;" data-toggle="modal" data-target="#exampleModalLong">
+            DONATE
+        </button>
+        <script src="/javascripts/change.js"></script>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="text-align: center;">DONATE</h5>
+                
+                </div>
+                <div class="modal-body">
+                    <div id="paypal-button-container" class="paypal-button-container"></div>
+                    <div class="card_container">
+                        <form id="card-form">
+                            <label for="card-number">Card Number</label>
+                            <div id="card-number" class="card_field"></div>
+                            <div style="display: flex; flex-direction: row;">
+                            <div>
+                                <label for="expiration-date">Expiration Date</label>
+                                <div id="expiration-date" class="card_field"></div>
+                            </div>
+                            <div style="margin-left: 10px;">
+                                <label for="cvv">CVV</label>
+                                <div id="cvv" class="card_field"></div>
+                            </div>
+                            </div>
+                            <label for="card-holder-name">Name on Card</label>
+                            <input
+                            type="text"
+                            id="card-holder-name"
+                            name="card-holder-name"
+                            autocomplete="off"
+                            placeholder="card holder name"
+                            />
+                            <div>
+                            <label for="card-billing-address-street">Billing Address</label>
+                            <input
+                                type="text"
+                                id="card-billing-address-street"
+                                name="card-billing-address-street"
+                                autocomplete="off"
+                                placeholder="street address"
+                            />
+                            </div>
+                            <div>
+                            <label for="card-billing-address-unit">&nbsp;</label>
+                            <input
+                                type="text"
+                                id="card-billing-address-unit"
+                                name="card-billing-address-unit"
+                                autocomplete="off"
+                                placeholder="unit"
+                            />
+                            </div>
+                            <div>
+                            <input
+                                type="text"
+                                id="card-billing-address-city"
+                                name="card-billing-address-city"
+                                autocomplete="off"
+                                placeholder="city"
+                            />
+                            </div>
+                            <div>
+                            <input
+                                type="text"
+                                id="card-billing-address-state"
+                                name="card-billing-address-state"
+                                autocomplete="off"
+                                placeholder="state"
+                            />
+                            </div>
+                            <div>
+                            <input
+                                type="text"
+                                id="card-billing-address-zip"
+                                name="card-billing-address-zip"
+                                autocomplete="off"
+                                placeholder="zip / postal code"
+                            />
+                            </div>
+                            <div>
+                            <input
+                                type="text"
+                                id="card-billing-address-country"
+                                name="card-billing-address-country"
+                                autocomplete="off"
+                                placeholder="country code"
+                            />
+                            </div>
+                            <br /><br />
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="float: left;">Close</button>
+                            <button value="submit" id="submit" class="btn-small" style="float: right;">Pay</button>
+                        </form>
+                        </div>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+        
+        
+        <script src="/javascripts/app.js"></script>
     </div>
   </body>
 </html>

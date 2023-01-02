@@ -10,11 +10,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/donate', async (req, res) => {
   const clientId = process.env.CLIENT_ID;
-  console.log(clientId)
   try {
     const clientToken = await paypal.generateClientToken();
+    console.log(clientId, clientToken);
     res.render("donate", { clientId, clientToken, title: 'donate' });
-    console.log(clientId, 'client token', clientToken)
   } catch (err) {
     res.status(500).send(err.message);
   }
