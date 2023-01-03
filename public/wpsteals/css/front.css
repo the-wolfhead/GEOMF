@@ -1,0 +1,20 @@
+.acwpb-legends {
+	text-align: center;
+}
+.acwpb-legends .acwpb-set-box,
+.acwpb-legends .acwpb-legend-item,
+.acwpb-legends .acwpb-set-name {
+	display: inline-block;
+	position: relative;
+}
+.acwpb-legends .acwpb-set-box,
+.acwpb-legends .acwpb-set-name {
+	vertical-align: middle;
+}
+.acwpb-legends .acwpb-set-box {
+	border-width: 1px;
+	border-style: solid;
+}
+.acwpb-legend-item.notshown .acwpb-set-name {
+	text-decoration: line-through;
+}

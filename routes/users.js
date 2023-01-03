@@ -68,5 +68,8 @@ router.get('/our-work', (req,res) => {
   res.render('our-work')
 })
 
+router.get('/staff/rufi', (erq, res) => {
+  res.render('staff/rufi')
+})
 
 module.exports = router;
