@@ -72,4 +72,36 @@ router.get('/staff/rufi', (erq, res) => {
   res.render('staff/rufi')
 })
 
+router.get('/staff/val', (erq, res) => {
+  res.render('staff/val')
+})
+
+router.get('/staff/abu', (erq, res) => {
+  res.render('staff/abu')
+})
+
+router.get('/staff/cas', (erq, res) => {
+  res.render('staff/cas')
+})
+
+router.get('/staff/ken', (erq, res) => {
+  res.render('staff/ken')
+})
+
+router.get('/staff/edi', (erq, res) => {
+  res.render('staff/edi')
+})
+
+router.get('/staff/nwa', (erq, res) => {
+  res.render('staff/nwa')
+})
+
+router.get('/staff/bre', (erq, res) => {
+  res.render('staff/bre')
+})
+
+router.get('/staff/dan', (erq, res) => {
+  res.render('staff/dan')
+})
+
 module.exports = router;
