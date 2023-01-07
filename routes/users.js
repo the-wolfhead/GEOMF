@@ -52,6 +52,10 @@ router.get('/about-us/our-staff/', (req, res) => {
   res.render('about-us/our-staff')
 })
 
+router.get('/about-us/matriarch', (req, res) => {
+  res.render('about-us/matriarch')
+})
+
 router.get('/about-us', (req, res) => {
   res.render('about-us')
 })
