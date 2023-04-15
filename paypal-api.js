@@ -1,92 +1,70 @@
-"use strict";
+// Require the PayPal SDK module
+const paypal = require('paypal-rest-sdk');
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+// Configure PayPal SDK
+paypal.configure({
+  'mode': 'sandbox', //sandbox or live
+  'client_id': 'YOUR_PAYPAL_CLIENT_ID',
+  'client_secret': 'YOUR_PAYPAL_CLIENT_SECRET'
 });
-exports.capturePayment = capturePayment;
-exports.createOrder = createOrder;
-exports.generateAccessToken = generateAccessToken;
-exports.generateClientToken = generateClientToken;
-const fetch = require("node-fetch");
 
-// set some important variables
-const {
-  CLIENT_ID,
-  APP_SECRET
-} = process.env;
-const base = "https://api-m.sandbox.paypal.com";
+// Set up donation details
+app.post('/donate', function(req, res) {
+  const amount = req.body.amount;
 
-// call the create order method
-async function createOrder() {
-  const purchaseAmount = "100.00"; // TODO: pull prices from a database
-  const accessToken = await generateAccessToken();
-  const url = `${base}/v2/checkout/orders`;
-  const response = await fetch(url, {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`
+  const donationDetails = {
+    "intent": "donate",
+    "payer": {
+      "payment_method": "paypal"
     },
-    body: JSON.stringify({
-      intent: "CAPTURE",
-      purchase_units: [{
-        amount: {
-          currency_code: "USD",
-          value: purchaseAmount
+    "redirect_urls": {
+      "return_url": "http://localhost:3000/success",
+      "cancel_url": "http://localhost:3000/cancel"
+    },
+    "transactions": [{
+      "amount": {
+        "total": amount,
+        "currency": "USD"
+      },
+      "description": "Donation"
+    }]
+  };
+
+  // Create donation payment
+  paypal.payment.create(donationDetails, function (error, payment) {
+    if (error) {
+      throw error;
+    } else {
+      // Redirect to PayPal for payment approval
+      for(let i = 0; i < payment.links.length; i++) {
+        if(payment.links[i].rel === 'approval_url') {
+          res.redirect(payment.links[i].href);
         }
-      }]
-    })
-  });
-  return handleResponse(response);
-}
-
-// capture payment for an order
-async function capturePayment(orderId) {
-  const accessToken = await generateAccessToken();
-  const url = `${base}/v2/checkout/orders/${orderId}/capture`;
-  const response = await fetch(url, {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`
+      }
     }
   });
-  return handleResponse(response);
-}
+});
 
-// generate access token
-async function generateAccessToken() {
-  const auth = Buffer.from(CLIENT_ID + ":" + APP_SECRET).toString("base64");
-  const response = await fetch(`${base}/v1/oauth2/token`, {
-    method: "post",
-    body: "grant_type=client_credentials",
-    headers: {
-      Authorization: `Basic ${auth}`
+// Execute payment after approval
+app.get('/success', function(req, res) {
+  const payerId = req.query.PayerID;
+  const paymentId = req.query.paymentId;
+
+  const executePaymentDetails = { 
+    "payer_id": payerId 
+  };
+
+  paypal.payment.execute(paymentId, executePaymentDetails, function (error, payment) {
+    if (error) {
+      throw error;
+    } else {
+      // Payment executed successfully
+      res.send('Thank you for your donation!');
     }
   });
-  const jsonData = await handleResponse(response);
-  return jsonData.access_token;
-}
+});
 
-// generate client token
-async function generateClientToken() {
-  const accessToken = await generateAccessToken();
-  const response = await fetch(`${base}/v1/identity/generate-token`, {
-    method: "post",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      "Accept-Language": "en_US",
-      "Content-Type": "application/json"
-    }
-  });
-  console.log('response', response.status);
-  const jsonData = await handleResponse(response);
-  return jsonData.client_token;
-}
-async function handleResponse(response) {
-  if (response.status === 200 || response.status === 201) {
-    return response.json();
-  }
-  const errorMessage = await response.text();
-  throw new Error(errorMessage);
-}
+// Handle donation cancellation
+app.get('/cancel', function(req, res) {
+  res.send('Donation cancelled');
+});
