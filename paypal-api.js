@@ -1,4 +1,4 @@
-// Require the PayPal SDK module
+/**  Require the PayPal SDK module
 const paypal = require('paypal-rest-sdk');
 
 // Configure PayPal SDK
@@ -67,4 +67,4 @@ app.get('/success', function(req, res) {
 // Handle donation cancellation
 app.get('/cancel', function(req, res) {
   res.send('Donation cancelled');
-});
+});*/

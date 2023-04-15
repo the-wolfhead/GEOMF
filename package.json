@@ -16,7 +16,8 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "node-fetch": "^2.6.7",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "paypal-rest-sdk": "^1.8.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
